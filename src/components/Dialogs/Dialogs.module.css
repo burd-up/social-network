@@ -1,0 +1,26 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 3fr 8fr;
+}
+
+.dialogs_item {
+    padding: 10px;
+    color: white;
+}
+.dialogs_item a:visited {
+    color: white;
+}
+
+.dialogs {
+    padding: 10px;
+    color: white;
+}
+
+.messages {
+    padding: 10px;
+}
+
+.message {
+    padding: 10px;
+    color: white;
+}
