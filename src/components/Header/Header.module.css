@@ -1,4 +1,6 @@
 .header {
+    display: flex;
+    justify-content: space-between;
     grid-area: h;
     background-color: #212121;
 }
@@ -6,4 +8,18 @@
 .header img {
     margin: 10px;
     height: 40px;
+}
+.time {
+    background-color: #595b5d;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    align-self: center;
+}
+.login {
+    background-color: #595b5d;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    align-self: center;
 }

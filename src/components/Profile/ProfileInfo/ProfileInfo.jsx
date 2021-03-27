@@ -1,15 +1,27 @@
 import s from './ProfileInfo.module.css';
+import userPhoto from '../../../assets/images/user.png';
 
-function ProfileInfo() {
+function ProfileInfo(props) {
     return (
         <div>
-            <div className={s.boxForMainImg}>
-                <img className={s.main_img} src="../../../../forest.jpg"/>
-            </div>
-            <div>
-                <img className={s.ava}
-                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgolBdeaXdt7hZ4G28YiA8shOCg4jkBg08uA&usqp=CAU"/>+
-                info
+            <div className={s.avaAndDiscription}>
+                <img className={s.ava} src={!props.profile.photos.large ? userPhoto : props.profile.photos.large }/>
+                <div className={s.discription}>
+                    <div className={s.nameAndStatus}>
+                        <div className={s.name}>{props.profile.fullName}</div>
+                        <div className={s.status}>{props.profile.aboutMe}</div>
+                    </div>
+                    <div className={s.contacts}> Contacts:
+                    {!props.profile.contacts.facebook ? null : <div>Facebook: {props.profile.contacts.facebook}</div>}
+                    {!props.profile.contacts.github ? null : <div>Github: {props.profile.contacts.github}</div>}
+                    {!props.profile.contacts.instagram ? null : <div>Instagram: {props.profile.contacts.instagram}</div>}
+                    {!props.profile.contacts.mainLink ? null : <div>MainLink: {props.profile.contacts.mainLink}</div>}
+                    {!props.profile.contacts.twitter ? null : <div>Twitter: {props.profile.contacts.twitter}</div>}
+                    {!props.profile.contacts.vk ? null : <div>vk: {props.profile.contacts.vk}</div>}
+                    {!props.profile.contacts.website ? null : <div>Website: {props.profile.contacts.website}</div>}
+                    {!props.profile.contacts.youtube ? null : <div>Youtube: {props.profile.contacts.youtube}</div>}
+                    </div>
+                </div>
             </div>
         </div>
     )
