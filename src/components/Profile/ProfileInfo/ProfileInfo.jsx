@@ -1,5 +1,8 @@
 import s from './ProfileInfo.module.css';
 import userPhoto from '../../../assets/images/user.png';
+import Status from "./Status";
+import StatusWithUseState from "./StatusWithUseState";
+
 
 function ProfileInfo(props) {
     return (
@@ -9,6 +12,7 @@ function ProfileInfo(props) {
                 <div className={s.discription}>
                     <div className={s.nameAndStatus}>
                         <div className={s.name}>{props.profile.fullName}</div>
+                        <StatusWithUseState status={props.status} updateStatus={props.updateStatus}/>
                         <div className={s.status}>{props.profile.aboutMe}</div>
                     </div>
                     <div className={s.contacts}> Contacts:

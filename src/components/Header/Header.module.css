@@ -12,14 +12,32 @@
 .time {
     background-color: #595b5d;
     border-radius: 10px;
-    padding: 15px;
+    padding: 10px;
     margin: 10px;
     align-self: center;
 }
 .login {
     background-color: #595b5d;
     border-radius: 10px;
-    padding: 15px;
+    padding: 10px;
     margin: 10px;
     align-self: center;
+}
+.login button{
+    background-color: #444444;
+    color: #f1f1f1;
+    font-size: 12px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+.login button:hover{
+    background-color: #212121;
+    color: #f1f1f1;
+
+}
+.login button:focus{
+    outline: none;
 }

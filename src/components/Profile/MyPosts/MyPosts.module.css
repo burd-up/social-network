@@ -5,12 +5,12 @@
   padding: 10px;
 }
 .textForm{
-  display: flex;
+  display: grid;
+  grid-template-columns: 3.5fr 1fr;
+  grid-column-gap: 10px;
+  grid-auto-rows: minmax(45px, auto);
 }
 .textForm textarea{
-  order: 1;
-  width: 100%;
-  height: 45px;
   resize: none;
   border-radius: 5px;
 }
@@ -18,8 +18,6 @@
   outline: none;
 }
 .textForm button{
-  order: 2;
-  margin-left: 10px;
   background-color: #444444;
   color: #212121;
   font-size: 12px;

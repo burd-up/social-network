@@ -1,0 +1,31 @@
+.formControl{
+    display: grid;
+    grid-template-columns: 4fr;
+    grid-auto-rows: minmax(30px, auto);
+}
+.formControl input,
+.formControl textarea {
+
+}
+.formControl span {
+
+}
+.error{
+    display: grid;
+    grid-template-columns: 4fr;
+    grid-auto-rows: minmax(30px, auto);
+}
+.error input,
+.error textarea {
+    border: solid red 3px;
+    grid-column: 1/4;
+    grid-row: 1/2;
+}
+.error span {
+    grid-column: 3/4;
+    grid-row: 1/2;
+    padding-right: 20px;
+    align-self: center;
+    color: red;
+
+}

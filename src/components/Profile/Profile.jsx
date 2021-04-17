@@ -8,8 +8,9 @@ function Profile(props) {
         return <Preloader/>
     }
     return (
+
         <div>
-            <ProfileInfo profile={props.profilePage.profile}/>
+            <ProfileInfo profile={props.profilePage.profile} status={props.status} updateStatus={props.updateStatus}/>
             <MyPostsContainer store={props.store}/>
         </div>
     )

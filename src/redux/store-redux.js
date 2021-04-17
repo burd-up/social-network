@@ -4,12 +4,16 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import usersReducer from "./users-reducer";
 import headerReducer from "./header-reducer";
 import thunkMiddleware from "redux-thunk";
+import { reducer as formReducer } from 'redux-form'
+import appReducer from "./app-reducer";
 
 let reducers = combineReducers({
     profilePage: profileReducer,
     messagePage: dialogsReducer,
     usersPage: usersReducer,
-    header: headerReducer
+    header: headerReducer,
+    form: formReducer,
+    app: appReducer
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));

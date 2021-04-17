@@ -59,7 +59,7 @@ const usersReducer = (state = initialState, action) => {
     }
 };
 //Thunks is hear!
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));
         usersAPI.getUsers(currentPage, pageSize).then(data => {

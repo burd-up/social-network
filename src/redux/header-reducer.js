@@ -1,4 +1,5 @@
 import {headerAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const CHANGE_TIME = 'CHANGE_TIME';
 const AUTH = 'AUTH';
@@ -21,27 +22,46 @@ const headerReducer = (state = initialState, action) => {
         case AUTH:
             return {
                 ...state,
-                ...action.data,
-                isAuth: true
+                ...action.data
             }
         default:
             return state;
     }
 };
 
-export const auth = () => {
+export const auth = () => (dispatch) => {
+    return headerAPI.auth().then(data => {
+        if (data.resultCode === 0) {
+            let {id, login, email} = data.data;
+            dispatch(setUserAuthData(id, login, email, true));
+        }
+    })
+}
+export const login = (email, password, rememberMe) => {
     return (dispatch) => {
-        headerAPI.auth().then(data => {
+        headerAPI.login(email, password, rememberMe).then(data => {
             if (data.resultCode === 0) {
-                let {userId, login, email} = data.data;
-                dispatch(setUserAuthData(userId, login, email));
+                dispatch(auth())
+            } else {
+                let err = data.messages.length > 0 ? data.messages[0] : "Some error"
+                dispatch(stopSubmit("login", {_error: err}))
+            }
+        })
+    }
+}
+export const logout = () => {
+    return (dispatch) => {
+        headerAPI.logout().then(data => {
+            if (data.resultCode === 0) {
+                dispatch(setUserAuthData(null, null, null, false));
             }
         })
     }
 }
 
+
 export const changeTime = () => ({type: CHANGE_TIME});
-export const setUserAuthData = (userId, login, email) => ({type: AUTH, data: {userId, login, email}})
+export const setUserAuthData = (userId, login, email, isAuth) => ({type: AUTH, data: {userId, login, email, isAuth}})
 
 export default headerReducer;
 

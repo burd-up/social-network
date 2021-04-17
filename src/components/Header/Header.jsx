@@ -7,7 +7,9 @@ function Header(props) {
         <header className={s.header}>
             <img src="../../logo.svg"/>
             <div className={s.time}>{props.header.time}</div>
-            <div className={s.login}>{props.header.isAuth ? props.header.login : "login"}</div>
+            <div className={s.login}>{props.header.isAuth
+                ? <div>{props.header.login} <button onClick={props.logout}>logout</button></div>
+                : "login"}</div>
         </header>
     )
 };

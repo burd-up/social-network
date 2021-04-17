@@ -1,31 +1,47 @@
-import s from './ProfileInfo.module.css';
-import userPhoto from '../../../assets/images/user.png';
-import {Status} from "./Status";
+import React from 'react';
+import s from './Status.module.css';
 
-function ProfileInfo(props) {
-    return (
-        <div>
-            <div className={s.avaAndDiscription}>
-                <img className={s.ava} src={!props.profile.photos.large ? userPhoto : props.profile.photos.large }/>
-                <div className={s.discription}>
-                    <div className={s.nameAndStatus}>
-                        <div className={s.name}>{props.profile.fullName}</div>
-                        <Status/>
-                        <div className={s.status}>{props.profile.aboutMe}</div>
-                    </div>
-                    <div className={s.contacts}> Contacts:
-                    {!props.profile.contacts.facebook ? null : <div>Facebook: {props.profile.contacts.facebook}</div>}
-                    {!props.profile.contacts.github ? null : <div>Github: {props.profile.contacts.github}</div>}
-                    {!props.profile.contacts.instagram ? null : <div>Instagram: {props.profile.contacts.instagram}</div>}
-                    {!props.profile.contacts.mainLink ? null : <div>MainLink: {props.profile.contacts.mainLink}</div>}
-                    {!props.profile.contacts.twitter ? null : <div>Twitter: {props.profile.contacts.twitter}</div>}
-                    {!props.profile.contacts.vk ? null : <div>vk: {props.profile.contacts.vk}</div>}
-                    {!props.profile.contacts.website ? null : <div>Website: {props.profile.contacts.website}</div>}
-                    {!props.profile.contacts.youtube ? null : <div>Youtube: {props.profile.contacts.youtube}</div>}
-                    </div>
-                </div>
+class Status extends React.Component {
+    state = {
+        aditMode: false,
+        status: this.props.status
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({status: this.props.status})
+        }
+    }
+
+    activateAditMode = () => {
+        this.setState({
+            aditMode: true
+        })
+    }
+
+    dectivateAdetMode = () => {
+        this.setState({
+            aditMode: false
+        })
+        this.props.updateStatus(this.state.status)
+    }
+
+    onChangeStatus = (e) => {
+        this.setState({
+            status: e.currentTarget.value
+        })
+    }
+
+    render() {
+        return (
+            <div >
+                {!this.state.aditMode && <div onDoubleClick={this.activateAditMode}>{this.props.status || "status"}</div>}
+                {this.state.aditMode && <div className={s.textForm}>
+                    <input autoFocus={true} onChange={this.onChangeStatus} onBlur={this.dectivateAdetMode} value={this.state.status}/>
+                </div>}
             </div>
-        </div>
-    )
-};
-export default ProfileInfo;
+        )
+    }
+}
+
+export default Status;

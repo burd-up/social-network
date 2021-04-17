@@ -1,30 +1,39 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Posts/Post';
+import {Field, reduxForm} from "redux-form";
+import FormControl from "../../common/FormControls/FormControl";
+import {maxLength, required} from "../../utils/validators";
+
+const maxLength30 = maxLength(30);
+
+let PostForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit} className={s.textForm}>
+            <Field component={FormControl} element={'textarea'} name="newPostText" type="text" placeholder="new post"
+            validate={[maxLength30]}/>
+            <button>Send</button>
+        </form>
+    )
+}
+
+PostForm = reduxForm({form:"postForm"})(PostForm);
 
 function MyPosts(props) {
 
-    let reff = React.createRef();
-    let onAdd = () => {
-        props.addPost();
-    };
-
-    let onChangePostText = () => {
-        let text = reff.current.value;
-        props.changePostText(text);
-    };
+    function onSubmit (formData) {
+        props.addPost(formData.newPostText)
+    }
 
     let posts = props.postData.map((post => <Post key={post.id} message={post.post} likesCount={post.likesCount}/>));
+
     return (
         <div className={s.posts}>
-            <div className={s.textForm}>
-                <textarea ref={reff}
-                          onChange={onChangePostText}
-                          value={props.newPostText}/>
-                <button onClick={onAdd}>add post</button>
-            </div>
+            <PostForm onSubmit={onSubmit}/>
             {posts}
         </div>
     )
 };
+
 export default MyPosts;
+
