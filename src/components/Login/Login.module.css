@@ -1,3 +1,25 @@
 .summaryError {
     color: red;
 }
+.form{
+    display: grid;
+/*    padding: 0 15px 0 0;*/
+}
+.form div{
+    padding: 5px 10px 0 5px;
+}
+.rememberMe{
+    display: grid;
+    grid-template-columns: 1fr 2fr 14fr;
+    align-items: center;
+}
+.title{
+    /*text-align: center;*/
+    padding-left: 10px;
+}
+.button{
+    width: 200px;
+    margin: 5px 0 10px 10px;
+/*    place-self: center;*/
+
+}

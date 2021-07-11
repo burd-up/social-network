@@ -8,7 +8,7 @@ let mapStateToProps = (state) => {
         postData: state.profilePage.postData,
         newPostText: state.profilePage.newPostText
     }
-}
+};
 
 const MyPostsContainer = connect(mapStateToProps, {addPost})(MyPosts);
 

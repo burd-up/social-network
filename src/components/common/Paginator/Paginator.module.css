@@ -1,0 +1,15 @@
+.currentNumberPage {
+    font-weight: bold;
+    cursor: pointer;
+    caret-color: transparent;
+    text-decoration: underline;
+}
+.ordinaryNumberPage {
+    cursor: pointer;
+    caret-color: transparent;
+    margin: 0px 10px;
+}
+.numbersPage{
+    display: flex;
+    justify-content: center;
+}

@@ -9,9 +9,9 @@ import s from './Login.module.css'
 
 const maxLength30 = maxLength(30);
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit} className={s.form}>
             <div>
                 <Field component={FormControl} element={"input"} name="email" type="text" placeholder="Email"
                        validate={[required, maxLength30]}/>
@@ -20,11 +20,12 @@ const LoginForm = (props) => {
                 <Field component={FormControl} element={"input"} name="password" type="password" placeholder="Password"
                        validate={[required]}/>
             </div>
-            <div>
-                <Field component={FormControl} element={"input"} name="rememberMe" type="checkbox"/> remember me
+            <div className={s.rememberMe}>
+                <Field component={FormControl} element={"input"} name="rememberMe" type="checkbox"/>
+                <div>remember me</div>
             </div>
-            <div className={s.summaryError}>{props.error}</div>
-            <button>Login</button>
+            <div className={s.summaryError}>{error}</div>
+            <button className={s.button}>Login</button>
         </form>
     )
 }
@@ -39,8 +40,8 @@ const Login = (props) => {
     if(props.isAuth) {
         return <Redirect to={'/profile'}/>
     }
-    return (<div>
-            <h1>LOGIN</h1>
+    return (<div >
+            <h1 className={s.title}>LOGIN</h1>
             <LoginFormReduxForm onSubmit={onSubmit}/>
         </div>
     )

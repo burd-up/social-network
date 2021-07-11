@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar.jsx';
-import {BrowserRouter, Route, withRouter} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
@@ -14,6 +14,7 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializedSuccess} from "./redux/app-reducer";
 import Preloader from "./components/Preloader/Preloader";
+import ToDoListContainer from "./components/ToDoList/ToDoListContainer";
 
 
 class App extends Component {
@@ -28,7 +29,6 @@ class App extends Component {
             return <Preloader/>
         }
         return (
-            <BrowserRouter>
                 <div className="app-wrapper">
                     <HeaderContainer store={this.props.store}/>
                     <Navbar/>
@@ -37,12 +37,12 @@ class App extends Component {
                         <Route path='/profile/:userId?' render={() => <ProfileConteiner store={this.props.store}/>}/>
                         <Route path='/users' render={() => <UsersContainer store={this.props.store}/>}/>
                         <Route path='/login' render={() => <Login store={this.props.store}/>}/>
+                        <Route path='/todo' render={() => <ToDoListContainer store={this.props.store}/>}/>
                         <Route path='/news' component={News}/>
                         <Route path='/settings' component={Settings}/>
                         <Route path='/music' component={Music}/>
                     </div>
                 </div>
-            </BrowserRouter>
         );
     }
 }

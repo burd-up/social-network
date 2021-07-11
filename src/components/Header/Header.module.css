@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     grid-area: h;
-    background-color: #212121;
+    background-color: #3f3f3f;
 }
 
 .header img {

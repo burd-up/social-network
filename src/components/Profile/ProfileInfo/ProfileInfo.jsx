@@ -1,33 +1,45 @@
 import s from './ProfileInfo.module.css';
+import React, {useState} from 'react';
 import userPhoto from '../../../assets/images/user.png';
-import Status from "./Status";
 import StatusWithUseState from "./StatusWithUseState";
 
 
-function ProfileInfo(props) {
+const ProfileInfo = React.memo(({profile: {contacts, photos, fullName, aboutMe}, ...props}) => {
+    const [onMouseEnter, setOnMouseEnter] = useState(null)
+
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            props.savePhoto(e.target.files[0]);
+        }
+    }
+
     return (
         <div>
             <div className={s.avaAndDiscription}>
-                <img className={s.ava} src={!props.profile.photos.large ? userPhoto : props.profile.photos.large }/>
+                <div onMouseEnter={() => setOnMouseEnter(true)} onMouseLeave={() => setOnMouseEnter(false)} className={s.photoBlock} >
+                    <img className={s.ava} src={photos.large || userPhoto}/>
+                    {props.isOwner ? <div className={onMouseEnter? s.mouseEnter : s.mouseLeave}><input  type={'file'} onChange={(event) => onMainPhotoSelected(event)}
+                                            placeholder={'new photo'}/></div> : null}
+                </div>
                 <div className={s.discription}>
                     <div className={s.nameAndStatus}>
-                        <div className={s.name}>{props.profile.fullName}</div>
+                        <div className={s.name}>{fullName}</div>
                         <StatusWithUseState status={props.status} updateStatus={props.updateStatus}/>
-                        <div className={s.status}>{props.profile.aboutMe}</div>
+                        <div className={s.status}>{aboutMe}</div>
                     </div>
                     <div className={s.contacts}> Contacts:
-                    {!props.profile.contacts.facebook ? null : <div>Facebook: {props.profile.contacts.facebook}</div>}
-                    {!props.profile.contacts.github ? null : <div>Github: {props.profile.contacts.github}</div>}
-                    {!props.profile.contacts.instagram ? null : <div>Instagram: {props.profile.contacts.instagram}</div>}
-                    {!props.profile.contacts.mainLink ? null : <div>MainLink: {props.profile.contacts.mainLink}</div>}
-                    {!props.profile.contacts.twitter ? null : <div>Twitter: {props.profile.contacts.twitter}</div>}
-                    {!props.profile.contacts.vk ? null : <div>vk: {props.profile.contacts.vk}</div>}
-                    {!props.profile.contacts.website ? null : <div>Website: {props.profile.contacts.website}</div>}
-                    {!props.profile.contacts.youtube ? null : <div>Youtube: {props.profile.contacts.youtube}</div>}
+                        {!contacts.facebook ? null : <div>Facebook: {contacts.facebook}</div>}
+                        {!contacts.github ? null : <div>Github: {contacts.github}</div>}
+                        {!contacts.instagram ? null : <div>Instagram: {contacts.instagram}</div>}
+                        {!contacts.mainLink ? null : <div>MainLink: {contacts.mainLink}</div>}
+                        {!contacts.twitter ? null : <div>Twitter: {contacts.twitter}</div>}
+                        {!contacts.vk ? null : <div>vk: {contacts.vk}</div>}
+                        {!contacts.website ? null : <div>Website: {contacts.website}</div>}
+                        {!contacts.youtube ? null : <div>Youtube: {contacts.youtube}</div>}
                     </div>
                 </div>
             </div>
         </div>
     )
-};
+});
 export default ProfileInfo;

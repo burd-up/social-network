@@ -1,0 +1,74 @@
+.toDo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    padding: 5px;
+}
+
+.currentTasks {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+    grid-column-gap: 3px;
+    grid-auto-rows: auto;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    padding: 5px;
+}
+
+.completedTasks {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+    grid-column-gap: 3px;
+    grid-auto-rows: auto;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    padding: 5px;
+}
+.tasks {
+    background-color: #444444;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 8fr 2fr;
+    grid-column-gap: 10px;
+    padding: 5px;
+}
+
+input {
+    width:  100%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    background-color: #444444;
+    color: #999999;
+    font-size: 12px;
+    padding: 10px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #212121;
+    color: #f1f1f1;
+
+}
+
+button:focus {
+    outline: none;
+}
+h3 {
+    margin-left: auto;
+    margin-right: auto;
+}
