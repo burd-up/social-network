@@ -46,8 +46,10 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         })
-
-    }
+    },
+    changeProfile(profile) {
+        return instance.put(`profile`, profile)
+    },
 }
 
 export const headerAPI = {

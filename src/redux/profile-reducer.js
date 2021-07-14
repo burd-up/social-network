@@ -80,6 +80,14 @@ export const savePhoto = (file) => async (dispatch) => {
             dispatch(savePhotoSuccess(response.data.data.photos));
     }
 }
+export const changeProfileData = (profile) => async (dispatch, getState) => {
+    const userId = getState().header.userId;
+    let response = await profileAPI.changeProfile(profile);
+
+    if (response.data.resultCode === 0) {
+        dispatch(getProfile(userId));
+    }
+}
 
 export const addPost = (postText) => ({type: ADD_POST, postText: postText});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile: profile});

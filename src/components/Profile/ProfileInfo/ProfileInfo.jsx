@@ -18,6 +18,9 @@ const ProfileInfo = React.memo(({profile, ...props}) => {
                              falseChangeForm={() => setShowProfileChangeForm(false)}
                              status={props.status}/>
                 {showProfileChangeForm && <ProfileChangeForm showProfileChangeForm={showProfileChangeForm}
+                                                             changeProfileData={props.changeProfileData}
+                                                             contacts={profile.contacts}
+                                                             profile={profile}
                                                              setShowProfileChangeForm={() => setShowProfileChangeForm(false)}/>}
             </div>
     )

@@ -14,6 +14,7 @@ function Profile(props) {
                          status={props.status}
                          isOwner={props.isOwner}
                          savePhoto={props.savePhoto}
+                         changeProfileData={props.changeProfileData}
                          updateStatus={props.updateStatus}/>
             <MyPostsContainer store={props.store}/>
         </div>
