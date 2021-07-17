@@ -52,14 +52,22 @@ export const profileAPI = {
     },
 }
 
+export const securityApi = {
+    getCaptchaUrl() {
+        return instance.get(`security/get-captcha-url`).then(response => {
+            return response.data.url
+        })
+    },
+}
+
 export const headerAPI = {
     auth() {
         return instance.get(`auth/me`).then(response => {
             return response.data
         })
     },
-    login(email, password, rememberMe) {
-        return instance.post(`auth/login`, {email, password, rememberMe}).then(response => {
+    login(email, password, rememberMe, captcha) {
+        return instance.post(`auth/login`, {email, password, rememberMe, captcha}).then(response => {
             return response.data
         })
     },
